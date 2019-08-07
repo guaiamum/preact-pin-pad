@@ -1,0 +1,10 @@
+.keypad {
+  display: flex;
+  flex-wrap: wrap;
+  // temp
+  width: 50vw;
+  margin: 0 auto;
+  .key {
+    width: 33%;
+  }
+}
