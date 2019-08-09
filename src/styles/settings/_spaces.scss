@@ -1,12 +1,6 @@
-$base: 6px; 
+$base: 8px; 
 
-$spacing-map: (
-    large: 3,
-    extra-large: 4,
-);
-
-// @each $name, $val in $spacing-map {
-//     $spacing-#{$name}: #{$base * $val}; 
-// }
+$spacing-small: $base;
+$spacing-medium: $base * 2;
 $spacing-large: $base * 3;
 $spacing-extra-large: $base * 4;

@@ -1,9 +1,9 @@
 import { h, Component, Fragment } from 'preact';
-import Button from './Button';
-import checkPin from '../utils/checkPin';
+import Key from './Key';
+import { checkPin, getStatusClass } from '../utils';
 
 const MAX_FAILED_ATT = 3;
-const buttonSet = new Array(10).fill(null).map((e, idx) => idx < 9 ? (idx + 1) : 0);
+const keySet = new Array(10).fill(null).map((e, idx) => idx < 9 ? (idx + 1) : 0);
 
 /**
  * @param {number} length
@@ -24,6 +24,10 @@ export default class App extends Component {
         this.state = { result: this.pin, isLocked: false };
     }
 
+    /**
+     * @param {number} number
+     * @returns {void}
+     */
     clickHandler = (number) => {
         const { isLocked, result } = this.state;
 
@@ -42,7 +46,6 @@ export default class App extends Component {
             this.setState({ result: 'OK' });
             this.failedAttempts = 0;
         } else {
-            console.log('failed');
             if (++this.failedAttempts >= MAX_FAILED_ATT) {
                 this.lockDevice();
                 return;
@@ -52,8 +55,12 @@ export default class App extends Component {
         this.resetAppTimeout();
     }
 
-    resetAppTimeout=(delay = 3000) => {
-        // do it with ... every second and then reset
+    /**
+     * @param {number} delay
+     * @returns {void}
+     */
+    resetAppTimeout = (delay = 2000) => {
+        // @todo: add loading indicator
         setTimeout(
             () => {
                 this.setState({ result: '', isLocked: false });
@@ -63,7 +70,10 @@ export default class App extends Component {
         );
     }
 
-    lockDevice =() => {
+    /**
+     * @returns {void}
+     */
+    lockDevice = () => {
         this.setState({ result: 'LOCKED', isLocked: true });
         this.resetAppTimeout(30000);
         this.failedAttempts = 0;
@@ -75,17 +85,17 @@ export default class App extends Component {
      * @returns {JSX}
      */
     render (props, { result, isLocked }) {
-        console.log('rendered', this.pin, `isLocked: ${isLocked}`);
+        const visorClasses = getStatusClass(result);
         return (
             <Fragment>
-                <div class="vsr">{ result }</div>
+                <div class={`vsr${visorClasses ? ' ' + visorClasses : ''}`}>{ result }</div>
                 <div class="keypad">
                     {
-                        buttonSet.map((number) =>
-                            <Button
+                        keySet.map((number) =>
+                            <Key
                                 disabled={isLocked}
-                                text={number}
-                                onClick={() => { this.clickHandler(number); }}
+                                number={number}
+                                onPress={this.clickHandler}
                             />,
                         )
                     }

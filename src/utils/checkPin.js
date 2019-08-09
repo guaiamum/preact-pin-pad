@@ -1,5 +1,6 @@
-const encodedPin = '1234';
+import { encrypt } from 'salteen';
 
-const salt = (pin) => pin;
+const encoder = encrypt('mysaltycracker');
+const encodedPin = encoder('1234');
 
-export default (pin) => salt(pin) === encodedPin;
+export default (pin) => encoder(pin) === encodedPin;

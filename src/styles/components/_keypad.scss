@@ -1,10 +1,55 @@
 .keypad {
-  display: flex;
-  flex-wrap: wrap;
-  // temp
-  width: 50vw;
-  margin: 0 auto;
-  .key {
-    width: 33%;
-  }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    // Key Wrapper
+    .key-w{    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding-bottom: $spacing-small;
+
+        width: calc(100% / 3);
+        text-align: center;
+    }
+    
+    // Key
+    .key {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 2rem;
+        font-weight: 500;
+        color: $white;
+
+        margin: 0 $spacing-small;
+        border-radius: .5em;
+        border: 2px solid $gray-500;
+        width: 3em;
+        height: 3em;
+
+        background: none;
+
+        &::after {
+            content: '';
+            display: block;
+            padding-top: calc(100% - 1em);
+        }
+
+        &:disabled {
+            color: $gray-500;
+        }
+
+        &:hover {
+            // background: $white-transparent;
+            cursor: pointer;
+        }
+
+        &:active {
+            background: $gray-700;
+        }
+    }
 }

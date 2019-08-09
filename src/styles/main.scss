@@ -1,10 +1,20 @@
 // Settings
-@import 'settings/spaces.scss';
+@import 'settings/spaces';
+@import 'settings/colors';
 
 // Normalize
 @import 'normalize';
 
 // Components
-@import 'components/button';
 @import 'components/keypad';
 @import 'components/visor';
+
+body {
+    font-family: 'Roboto';
+    background-color: $gray-800;
+}
+
+#root {
+    max-width: 312px;
+    margin: 0 auto;
+}

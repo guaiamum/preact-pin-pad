@@ -1,5 +1,26 @@
 // Visor
 .vsr {
-    min-height: $spacing-extra-large;
+    display: flex;
+    justify-content: center;
+
+    font-size: 3rem;
+    padding: $spacing-large;
+    min-height: $spacing-extra-large * 2;
+
     color: white;
+
+    // Error
+    &._err {
+        color: $red-500;
+    }
+
+    // Ok
+    &._ok {
+        color: $green-500;
+    }
+
+    // Locked
+    &._lock {
+        color: $yellow-500;
+    }
 }
