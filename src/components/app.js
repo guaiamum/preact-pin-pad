@@ -56,11 +56,11 @@ export default class App extends Component {
     }
 
     /**
+     * @todo: add loading indicator
      * @param {number} delay
      * @returns {void}
      */
     resetAppTimeout = (delay = 2000) => {
-        // @todo: add loading indicator
         setTimeout(
             () => {
                 this.setState({ result: '', isLocked: false });
@@ -80,6 +80,7 @@ export default class App extends Component {
     }
 
     /**
+     * @todo: split visor into component
      * @param {Object} props
      * @param {Object} state
      * @returns {JSX}
