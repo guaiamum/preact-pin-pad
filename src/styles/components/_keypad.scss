@@ -1,18 +1,19 @@
+
+$key-size: 2.5em;
+
 .keypad {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-gap: $spacing-small;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
 
     // Key Wrapper
-    .key-w{    
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        padding-bottom: $spacing-small;
-
-        width: calc(100% / 3);
+    .key-w {
         text-align: center;
+        
+        &:last-child {
+            grid-column: 2/2;
+        }
     }
     
     // Key
@@ -21,34 +22,29 @@
         justify-content: center;
         align-items: center;
 
-        font-size: 2rem;
+        font-size: 2rem; // 32px
         font-weight: 500;
         color: $white;
 
-        margin: 0 $spacing-small;
-        border-radius: .5em;
-        border: 2px solid $gray-500;
-        width: 3em;
-        height: 3em;
+        border-radius: .5em; // 16 px
+        border: .06em solid $gray-500; // 1.92px
+        width: $key-size;
+        height: $key-size;
 
         background: none;
-
-        &::after {
-            content: '';
-            display: block;
-            padding-top: calc(100% - 1em);
-        }
 
         &:disabled {
             color: $gray-500;
         }
-
-        &:hover {
+        
+        // @todo: improove keyboard nav
+        &:hover,
+        &:focus {
             // background: $white-transparent;
             cursor: pointer;
         }
 
-        &:active {
+        &:focus:active {
             background: $gray-700;
         }
     }
