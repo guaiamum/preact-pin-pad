@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import Key from './index';
+import Key from '../../src/components/Key/index';
 import { mount } from 'enzyme';
 
 let clickedNumber;
@@ -10,10 +10,10 @@ let clickedNumber;
 const clickHandler = (n) => { clickedNumber = n; };
 
 test('onPress to be called', () => {
-    const numberPassed = 137;
-    const context = mount(<Key onPress={clickHandler} number={numberPassed} />);
+    const passedNumber = 137;
+    const context = mount(<Key onPress={clickHandler} number={passedNumber} />);
 
     context.find('button').simulate('click');
 
-    expect(clickedNumber).toBe(numberPassed);
+    expect(clickedNumber).toBe(passedNumber);
 });
