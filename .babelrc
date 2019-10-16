@@ -1,6 +1,6 @@
 {
     "presets": [
-      ["@babel/preset-env", { "modules": false }],
+      ["@babel/preset-env", { "modules": false }]
     ],
     "plugins": [
         ["@babel/plugin-transform-react-jsx", { "pragma": "h" }],
@@ -9,7 +9,7 @@
     "env": {
         "test": {
             "plugins": [
-                "transform-es2015-modules-commonjs",
+                "transform-es2015-modules-commonjs"
             ]
         }
     }
