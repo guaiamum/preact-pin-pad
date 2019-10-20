@@ -53,7 +53,7 @@
   "dependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-preact-pure": "^2.0.2",
-    "preact": "^10.0.0-rc.1",
+    "preact": "^10.0.1",
     "preact-render-to-string": "^5.0.6",
     "salteen": "^1.0.0"
   }
