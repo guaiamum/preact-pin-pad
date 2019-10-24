@@ -8,7 +8,11 @@ module.exports = {
     },
     plugins: [
         'react',
+        'jest',
     ],
+    env: {
+        'jest/globals': true,
+    },
     settings: {
         react: {
             pragma: 'h',
